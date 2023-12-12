@@ -18,8 +18,7 @@ public class Pattern13 {
             for(int j=0; j<=i ;j++)
             {
                System.out.print(icj+" ");
-               int icjp = (icj * (i-j))/(j+1); //logic of permutation and combination
-                icj = icjp;
+                icj = (icj * (i-j))/(j+1); //permutation and combination concept to find next element from previous element
             }
             System.out.println();
         }
