@@ -1,1 +1,2 @@
-# I will be adding all the Data structure questions solved by me as a part of my learning process in this repository
+## 🚀 Welcome to Java Data Structures, a collection of essential data structures implemented in Java for efficient algorithmic solutions.
+
