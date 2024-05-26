@@ -3,9 +3,7 @@ package stack;
 import java.util.Scanner;
 import java.util.Stack;
 
-//        [(a+b) + {(c+d) * (e+f)}]  --> balanced
-//        [(a+b) + {(c+d) * (e/f)]}  --> unbalanced
-public class BalancedBrackets {
+public class UnbalancedBrackets {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         String str = s.nextLine();
@@ -32,15 +30,15 @@ public class BalancedBrackets {
                 }
                 else if(ch == ']')
                 {
-                   while(st.peek() != '[')
-                   {
-                       st.pop();
-                       if(st.peek() == '{' || st.peek() == '(')
-                       {
-                           System.out.println("Unbalanced");
-                           return;
-                       }
-                   }
+                    while(st.peek() != '[')
+                    {
+                        st.pop();
+                        if(st.peek() == '{' || st.peek() == '(')
+                        {
+                            System.out.println("Unbalanced");
+                            return;
+                        }
+                    }
                 }
 
                 else
@@ -58,7 +56,7 @@ public class BalancedBrackets {
             }
             else
             {
-               st.push(ch);
+                st.push(ch);
             }
         }
         System.out.println("Balanced");

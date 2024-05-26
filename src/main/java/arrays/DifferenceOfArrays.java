@@ -5,62 +5,67 @@ import java.util.Scanner;
 public class DifferenceOfArrays {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
-        System.out.print("enter the size of first array ");
-        int n1 = s.nextInt();
-        int []ar1 = new int[n1];
-        for(int i=0 ;i<n1 ;i++){
-            System.out.print("enter the "+i+"th element");
-            ar1[i] = s.nextInt();
-        }
-        System.out.print("enter the size of second array ");
-        int n2 = s.nextInt();
-        int []ar2 = new int[n2];
-        for(int i=0 ; i<n2 ;i++)
+        System.out.println("enter size of arr1 and arr2");
+        int size1 = s.nextInt();
+        int size2 = s.nextInt();
+        System.out.println("enter array 1 elements ");
+        int arr1[] = new int[size1];
+        for(int i=0 ; i<size1 ; i++)
         {
-            System.out.print("enter the "+i+"th element");
-            ar2[i]=s.nextInt();
+            arr1[i] = s.nextInt();
+        }
+        System.out.println("enter array 2 elements");
+        int arr2[] = new int[size2];
+        for(int i=0 ; i<size2 ; i++)
+        {
+            arr2[i] = s.nextInt();
         }
 
-        int [] temp = new int[n1]; //considering n1>n2
+        int diff[] = new int[Math.max(size1, size2)];
+        // perform the diff logic now
         int carry = 0;
-        int i = ar1.length-1;
-        int j = ar2.length-1;
-        int k = ar1.length-1;
-        while(j>=0)
+        int i = size1-1;
+        int j = size2-1;
+        int k = diff.length-1;
+        while(k>=0)
         {
-            int d1 = ar1[i];
-            int d2 = ar2[j];
-            d1 = d1 + carry;
-            if(d1>=d2){
-                int diff = d1-d2;
-                carry = 0;
-                temp[k] = diff;
-            }else{
-                int diff = d1+ 10 - d2;
-                carry = -1;
-                temp[k] = diff;
+            int d = 0;
+            int a1v = i >=0 ? arr1[i] : 0;
+
+            if(arr2[j] + carry >= a1v)
+            {
+                d = arr2[j]+carry -a1v;
+                carry =0;
             }
-            j--;
+            else
+            {
+               d = arr2[j]+carry + 10 -a1v;
+               carry = -1;
+            }
+
+            diff[k] = d;
             i--;
+            j--;
             k--;
         }
-        int lengthDiff = n1-n2;
-        temp[lengthDiff-1] = ar1[lengthDiff-1]+carry;
-        for(int l = 0 ;l <lengthDiff-1 ; l++){
-            temp[l]=ar1[l];
+
+        int idx =0 ;
+        while(idx < diff.length)
+        {
+                if(diff[idx] == 0)
+                {
+                    idx++;
+                }
+                else
+                {
+                    break;
+                }
         }
-        int index=0;
-      for(int m=0 ; m<temp.length ; m++){
-          if(temp[m] != 0){
-              index = m;
-              break;
-          }
-      }
 
-      for(int z= index ; z< temp.length ;z++){
-          System.out.print(temp[z]+" ");
-      }
-
-
+        while(idx < diff.length)
+        {
+            System.out.print(diff[idx]+ " ");
+            idx++;
+        }
     }
 }

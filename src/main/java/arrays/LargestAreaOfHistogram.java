@@ -1,11 +1,12 @@
-package stack;
+package arrays;
 
 import java.util.Stack;
 
-public class LargestAreaHistogramUsingStack {
+public class LargestAreaOfHistogram {
     public static void main(String[] args) {
-        int [] arr = {6,9,5,4,5,10,6};
+        int arr[] = {6,2,5,4,5,1,6};
         Stack<Integer> st = new Stack<>();
+
 //      right boundary logic --> NEXT GREATER ELEMENT TO THE RIGHT LOGIC
         int [] rightBoundary = new int[arr.length];
         st.push(arr.length-1);
