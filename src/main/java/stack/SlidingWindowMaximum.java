@@ -25,6 +25,7 @@ public class SlidingWindowMaximum {
             {
                 nge[i] = st.peek();
             }
+            st.push(i);
         }
     // sliding window logic
         int j=0;
